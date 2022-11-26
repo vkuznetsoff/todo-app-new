@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Nav/Nav";
-import Task from "./components/Task/Task";
-import TaskList from "./components/TaskList/TaslList";
+import Project from "./components/Project/Project";
+import ProjectList from "./components/ProjectList/ProjectList";
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/tasks" element={<TaskList />} />
-          <Route path="/task" element={<Task />} />
+          <Route path="/projects" element={<ProjectList />} />
+          <Route path="/project" element={<Project />} />
         </Routes>
       </BrowserRouter>
     </div>

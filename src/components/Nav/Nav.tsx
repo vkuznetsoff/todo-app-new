@@ -4,11 +4,11 @@ import "./Nav.css";
 const Nav = () => {
   return (
     <div className="nav">
-      <NavLink to="/tasks" className={"navitem"}>
+      <NavLink to="/projects" className={"navitem"}>
         Список проектов
       </NavLink>
-      <NavLink to="/task" className={"navitem"}>
-        Задача
+      <NavLink to="/project" className={"navitem"}>
+        Проект
       </NavLink>
     </div>
   );
