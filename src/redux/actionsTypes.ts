@@ -1,2 +1,14 @@
-export const ACTION_1 = "ACTION_1";
-export const ACTION_2 = "ACTION_2";
+import { IProject } from "./stroreTypes";
+
+export const ADD_PROJECT = "ADD_PROJECT";
+
+interface IAddProjectPayload {
+  project: IProject;
+}
+
+interface IAddProject {
+  type: typeof ADD_PROJECT;
+  payload: IAddProjectPayload;
+}
+
+export type ActionProjectType = IAddProject;

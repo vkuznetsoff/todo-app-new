@@ -5,4 +5,6 @@ const rootReducer = combineReducers({
   todoReducer,
 });
 
+export type RootStateType = ReturnType<typeof rootReducer>;
+
 export default rootReducer;

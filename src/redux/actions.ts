@@ -1,7 +1,8 @@
-import { ACTION_1 } from "./actionsTypes";
+import { ADD_PROJECT } from "./actionsTypes";
 
-export const increaseCounter = () => {
+export const addProject = (id: String, name: String, data: String) => {
   return {
-    type: ACTION_1,
+    type: ADD_PROJECT,
+    payload: { id, name, data },
   };
 };

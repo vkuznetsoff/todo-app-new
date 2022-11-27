@@ -1,96 +1,113 @@
-interface ITodo {
-  id: Number;
-  title: String;
-  describe: String;
-  // dateCreate: String; //Change to Date Type******
-  // timeFromCreation: String;
-  // dateEnd: String;
-  // proirity: String;
-  // attachment: String;
-  status: String;
-  // isSubTodo: Boolean;
-  // comments: String;
-}
+// interface ITodo {
+//   id: Number;
+//   title: String;
+//   describe: String;
+//   // dateCreate: String; //Change to Date Type******
+//   // timeFromCreation: String;
+//   // dateEnd: String;
+//   // proirity: String;
+//   // attachment: String;
+//   status: String;
+//   // isSubTodo: Boolean;
+//   // comments: String;
+// }
 
-export interface IProject {
-  id: Number;
-  name: String;
-  todos: Array<ITodo>;
-}
+import { ActionProjectType, ADD_PROJECT } from "./actionsTypes";
 
-// export interface IInitialState extends Array<IProject> {}
-export type IInitialState = IProject[];
+// export interface IProject {
+//   id: Number;
+//   name: String;
+//   todos: Array<ITodo>;
+// }
 
-const initialState: IInitialState = [
+// // export interface IInitialState extends Array<IProject> {}
+// export type IInitialState = IProject[];
+
+// const initialState = [
+//   {
+//     id: 1,
+//     name: "Project 1",
+//     todos: [
+//       {
+//         id: 11,
+//         title: "Task1",
+//         describe: "Task1",
+//         // dateCreate: String; //Change to Date Type******
+//         // timeFromCreation: String;
+//         // dateEnd: String;
+//         // proirity: String;
+//         // attachment: String;
+//         status: "active",
+//         // isSubTodo: Boolean;
+//         // comments: String;
+//       },
+//       {
+//         id: 12,
+//         title: "Task2",
+//         describe: "Task2",
+//         // dateCreate: String; //Change to Date Type******
+//         // timeFromCreation: String;
+//         // dateEnd: String;
+//         // proirity: String;
+//         // attachment: String;
+//         status: "active",
+//         // isSubTodo: Boolean;
+//         // comments: String;
+//       },
+//     ],
+//   },
+
+//   {
+//     id: 2,
+//     name: "Project 2",
+//     todos: [
+//       {
+//         id: 21,
+//         title: "Task21",
+//         describe: "Task21",
+//         // dateCreate: String; //Change to Date Type******
+//         // timeFromCreation: String;
+//         // dateEnd: String;
+//         // proirity: String;
+//         // attachment: String;
+//         status: "active",
+//         // isSubTodo: Boolean;
+//         // comments: String;
+//       },
+//       {
+//         id: 22,
+//         title: "Task22",
+//         describe: "Task22",
+//         // dateCreate: String; //Change to Date Type******
+//         // timeFromCreation: String;
+//         // dateEnd: String;
+//         // proirity: String;
+//         // attachment: String;
+//         status: "active",
+//         // isSubTodo: Boolean;
+//         // comments: String;
+//       },
+//     ],
+//   },
+// ];
+const initialState = [
   {
-    id: 1,
+    id: "1",
     name: "Project 1",
-    todos: [
-      {
-        id: 11,
-        title: "Task1",
-        describe: "Task1",
-        // dateCreate: String; //Change to Date Type******
-        // timeFromCreation: String;
-        // dateEnd: String;
-        // proirity: String;
-        // attachment: String;
-        status: "active",
-        // isSubTodo: Boolean;
-        // comments: String;
-      },
-      {
-        id: 12,
-        title: "Task2",
-        describe: "Task2",
-        // dateCreate: String; //Change to Date Type******
-        // timeFromCreation: String;
-        // dateEnd: String;
-        // proirity: String;
-        // attachment: String;
-        status: "active",
-        // isSubTodo: Boolean;
-        // comments: String;
-      },
-    ],
+    todos: [],
   },
 
   {
-    id: 2,
+    id: "2",
     name: "Project 2",
-    todos: [
-      {
-        id: 21,
-        title: "Task21",
-        describe: "Task21",
-        // dateCreate: String; //Change to Date Type******
-        // timeFromCreation: String;
-        // dateEnd: String;
-        // proirity: String;
-        // attachment: String;
-        status: "active",
-        // isSubTodo: Boolean;
-        // comments: String;
-      },
-      {
-        id: 22,
-        title: "Task22",
-        describe: "Task22",
-        // dateCreate: String; //Change to Date Type******
-        // timeFromCreation: String;
-        // dateEnd: String;
-        // proirity: String;
-        // attachment: String;
-        status: "active",
-        // isSubTodo: Boolean;
-        // comments: String;
-      },
-    ],
+    todos: [],
   },
 ];
 
-const todoReducer = (state: IInitialState = initialState, action: any) => {
+const todoReducer = (state = initialState, action: ActionProjectType) => {
   switch (action.type) {
+    case ADD_PROJECT:
+      return [...state, action.payload];
     default:
       return state;
   }
