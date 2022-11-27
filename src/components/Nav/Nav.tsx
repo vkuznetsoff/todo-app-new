@@ -7,9 +7,9 @@ const Nav = () => {
       <NavLink to="/projects" className={"navitem"}>
         Список проектов
       </NavLink>
-      <NavLink to="/project" className={"navitem"}>
+      {/* <NavLink to="/project" className={"navitem"}>
         Проект
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 };
