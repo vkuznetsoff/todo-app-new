@@ -12,8 +12,13 @@
 //   // comments: String;
 // }
 
-import { ActionProjectType, ADD_PROJECT } from "./actionsTypes";
+import { ActionProjectType, ADD_PROJECT, GET_TODOS } from "./actionsTypes";
 
+const statuses = {
+  QUEUE: "QUEUE",
+  DEVELOPMENT: "DEVELOPMENT",
+  DONE: "DONE",
+}
 // export interface IProject {
 //   id: Number;
 //   name: String;
@@ -94,13 +99,35 @@ const initialState = [
   {
     id: "1",
     name: "Project 1",
-    todos: [],
+    todos: [
+      {
+        id: "1-1",
+        title: "Todo 1-1",
+        status: statuses.QUEUE
+      },
+      {
+        id: "1-2",
+        title: "Todo 1-2",
+        status: statuses.QUEUE
+      }
+    ]
   },
 
   {
     id: "2",
     name: "Project 2",
-    todos: [],
+    todos: [
+      {
+        id: "2-1",
+        title: "Todo 2-1",
+        status: statuses.DEVELOPMENT
+      },
+      {
+        id: "2-2",
+        title: "Todo 2-2",
+        status: statuses.DONE
+      }
+    ]
   },
 ];
 
@@ -108,6 +135,10 @@ const todoReducer = (state = initialState, action: ActionProjectType) => {
   switch (action.type) {
     case ADD_PROJECT:
       return [...state, action.payload];
+
+    case GET_TODOS:
+      return [...state.filter(s => s.id === String(action.payload))]
+
     default:
       return state;
   }

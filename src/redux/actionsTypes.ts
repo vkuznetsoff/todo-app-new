@@ -1,14 +1,23 @@
 import { IProject } from "./stroreTypes";
 
 export const ADD_PROJECT = "ADD_PROJECT";
+export const GET_TODOS = "GET_TODOS";
 
 interface IAddProjectPayload {
   project: IProject;
 }
 
-interface IAddProject {
+interface IAddProjectAction {
   type: typeof ADD_PROJECT;
   payload: IAddProjectPayload;
 }
 
-export type ActionProjectType = IAddProject;
+interface IGetTodosPayload {
+  id: String;
+}
+interface IGetTodosAction {
+  type: typeof GET_TODOS;
+  payload: IAddProjectPayload;
+}
+
+export type ActionProjectType = IAddProjectAction | IGetTodosAction;

@@ -8,20 +8,16 @@ import { IProject } from "../../redux/stroreTypes";
 // import { IInitialState } from "../../redux/todoReducer";
 //import "./App.css";
 
-const ProjectList: FC = () => {
+const ProjectList = () => {
   const dispatch = useDispatch();
-  const state1 = useSelector((state: RootStateType) => state.todoReducer);
+  const state1 = useSelector((state) => state.todoReducer);
   console.log(state1);
 
   return (
     <div className="projectList">
-      {(state1 as IProject[]).map((el) => (
+      {state1.map((el) => (
         <div>
-          <NavLink
-            key={String(el.id)}
-            to={`/projects/${el.id}`}
-            className={"navitem"}
-          >
+          <NavLink key={el.id} to={`/projects/${el.id}`} className={"navitem"}>
             {el.name}
           </NavLink>
         </div>

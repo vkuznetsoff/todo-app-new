@@ -1,6 +1,21 @@
 .projectcontainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.project__title {
+  font-size: 24pt;
+  font-weight: 700;
+}
+
+.project__todos {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.todos__column {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
 }
 
 @media (min-width: 800px) {
