@@ -5,12 +5,13 @@ import "./Project.css";
 
 // const Project: FC<{ project: IProject }> = ({ project }) => {
 const Project = () => {
-  const params = useParams();
+  const { projectID } = useParams();
+  console.log(projectID);
 
   return (
     <div className="project">
       <div className="projectcontainer">
-        <div>{params}</div>
+        <div>{projectID}</div>
       </div>
     </div>
   );

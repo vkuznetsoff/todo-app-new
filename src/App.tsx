@@ -14,7 +14,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/projects" element={<ProjectList />} />
-          <Route path="/projects/:projectID" element={<ProjectList />} />
+          <Route path="/projects/:projectID" element={<Project />} />
 
           {/* <Route path="/project" element={<Project project: IProject= />} /> */}
         </Routes>
