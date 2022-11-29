@@ -1,4 +1,7 @@
-.projectcontainer {
+.project__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .project__title {
@@ -10,6 +13,7 @@
   display: flex;
   justify-content: center;
   gap: 25px;
+  margin-top: 30px;
 }
 
 .todos__column {
@@ -18,6 +22,21 @@
   width: 250px;
   /* border: 1px solid grey; */
   padding: 20px;
+}
+
+.project__button {
+  font-weight: 500;
+  color: antiquewhite;
+  background-color: cadetblue;
+  width: 200px;
+  border-radius: 15px;
+  margin-top: 30px;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.project__button:hover {
+  filter: brightness(120%);
 }
 
 @media (min-width: 800px) {

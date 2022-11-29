@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import "./Project.css";
@@ -6,6 +6,7 @@ import Todo from "../Todo/Todo";
 import { useSelector } from "react-redux";
 import TargetBox from "./TargetBox";
 import { statuses } from "./../../redux/todoReducer";
+import Modal from "../Modal/Modal";
 
 const tbKeys = {
   QUEUE: "QUEUE",
@@ -14,9 +15,12 @@ const tbKeys = {
 };
 const Project = () => {
   const { projectID } = useParams();
+  const [showModal, setShowModal] = useState(false);
 
   const projects = useSelector((state) => state.todoReducer);
   const currentTodos = projects.find((t) => t.id === projectID).todos;
+
+  const handleAddButton = () => {};
 
   // useEffect(() => {
   //   getTodos(String(projectID));
@@ -26,6 +30,10 @@ const Project = () => {
     <div className="project">
       <div className="project__container">
         <div className="project__title">Проект: {projectID}</div>
+
+        <div className="project__button" onClick={handleAddButton}>
+          + Добавить задачу
+        </div>
 
         <div className="project__todos">
           {/* <div className="todos__column">
@@ -64,6 +72,8 @@ const Project = () => {
               (f) => f.status === statuses.DONE
             )}
           />
+          <button onClick={() => setShowModal(true)}>OPEN</button>
+
           {/* <TargetBox currentTodos={currentTodos} />
           <TargetBox currentTodos={currentTodos} /> */}
           {/* 
@@ -84,6 +94,8 @@ const Project = () => {
           </div>
            */}
         </div>
+
+        <Modal showModal={showModal} setShowModal={setShowModal} />
       </div>
     </div>
   );

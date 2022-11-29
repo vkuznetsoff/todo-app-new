@@ -11,6 +11,7 @@ const Todo = ({ todo }) => {
     }),
   }));
 
+  const todoButtonHandle = () => {};
   return (
     <div
       ref={drag}
@@ -18,8 +19,10 @@ const Todo = ({ todo }) => {
         opacity: isDragging ? 0.5 : 1,
       }}
       className="todo"
+      onClick={todoButtonHandle}
     >
-      {todo.title}
+      <div class="todo__title">{todo.title}</div>
+      <div class="todo__button">...</div>
     </div>
   );
 };
