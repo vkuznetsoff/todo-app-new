@@ -12,13 +12,20 @@
 //   // comments: String;
 // }
 
-import { ActionProjectType, ADD_PROJECT, GET_TODOS } from "./actionsTypes";
+import {
+  ActionProjectType,
+  ADD_PROJECT,
+  GET_TODOS,
+  REMOVE_TODO,
+} from "./actionsTypes";
+import { ADD_TODO } from "./actionsTypes";
+import { CHANGE_TODO_STATUS } from "./actionsTypes";
 
-const statuses = {
+export const statuses = {
   QUEUE: "QUEUE",
   DEVELOPMENT: "DEVELOPMENT",
   DONE: "DONE",
-}
+};
 // export interface IProject {
 //   id: Number;
 //   name: String;
@@ -103,14 +110,14 @@ const initialState = [
       {
         id: "1-1",
         title: "Todo 1-1",
-        status: statuses.QUEUE
+        status: statuses.QUEUE,
       },
       {
         id: "1-2",
         title: "Todo 1-2",
-        status: statuses.QUEUE
-      }
-    ]
+        status: statuses.QUEUE,
+      },
+    ],
   },
 
   {
@@ -120,24 +127,69 @@ const initialState = [
       {
         id: "2-1",
         title: "Todo 2-1",
-        status: statuses.DEVELOPMENT
+        status: statuses.DEVELOPMENT,
       },
       {
         id: "2-2",
         title: "Todo 2-2",
-        status: statuses.DONE
-      }
-    ]
+        status: statuses.DONE,
+      },
+    ],
   },
 ];
 
-const todoReducer = (state = initialState, action: ActionProjectType) => {
+const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PROJECT:
       return [...state, action.payload];
 
     case GET_TODOS:
-      return [...state.filter(s => s.id === String(action.payload))]
+      return [...state.filter((s) => s.id === String(action.payload))];
+
+    case CHANGE_TODO_STATUS:
+      debugger;
+      const { projectID, todo, newStatus } = action.payload;
+      return state.map((pr) => {
+        if (pr.id === projectID) {
+          // const newTodos = pr.todos.map(t => {
+          //   if (t.id === todo.id) {
+          //     return {...t, status: newStatus}
+          //   } else return t
+          // })
+          return {
+            ...pr,
+            todos: [
+              ...pr.todos.filter((t) => t.id !== todo.id),
+              { ...todo, status: newStatus },
+            ],
+          };
+        } else return pr;
+      });
+
+    case REMOVE_TODO:
+      const { todoID, projectFROM } = action.payload;
+      return state.map((p) => {
+        if (p.id === projectFROM) {
+          return { ...p, items: p.items.filter((i) => i.id !== todoID) };
+        } else return p;
+      });
+
+    // case ADD_TODO:
+    //   return state.map((b) => {
+    //     if (b.id === action.payload.boardId) {
+    //       return {
+    //         ...b,
+    //         items: [...b.items, { id: uniqid(), text: action.payload.text }],
+    //       };
+    //     } else return b;
+    //   });
+
+    // case REMOVE_TODO:
+    //   return state.map(pr => (
+    //     if (pr.id ===action.payload) {
+
+    //     }
+    //   ))
 
     default:
       return state;

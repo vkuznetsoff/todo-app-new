@@ -11,7 +11,6 @@ import { IProject } from "../../redux/stroreTypes";
 const ProjectList = () => {
   const dispatch = useDispatch();
   const state1 = useSelector((state) => state.todoReducer);
-  console.log(state1);
 
   return (
     <div className="projectList">

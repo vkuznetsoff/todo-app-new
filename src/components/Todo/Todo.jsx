@@ -5,6 +5,7 @@ import { TODO } from "../dnd/dndTypes";
 const Todo = ({ todo }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: TODO,
+    item: todo,
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
