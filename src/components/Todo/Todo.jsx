@@ -23,13 +23,11 @@ const Todo = ({ todo }) => {
   }));
 
   const todoButtonHandle = () => {
-    debugger;
     setModalBody(EDIT_TODO);
     setShowModal(!showModal);
   };
 
   const commentsButtonHandle = () => {
-    debugger;
     setModalBody(COMMENTS);
     setShowModal(!showModal);
   };

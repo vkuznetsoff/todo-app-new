@@ -1,0 +1,30 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment__right {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment__details {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment__text {
+  text-align: left;
+  /* font-size: 12pt; */
+}
+
+.comment__author {
+  color: olive;
+  font-weight: 600;
+  margin-right: 10px;
+}
