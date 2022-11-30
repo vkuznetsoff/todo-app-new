@@ -10,6 +10,22 @@
   justify-content: center;
 }
 
+.modal__container {
+  background-color: antiquewhite;
+  width: 500px;
+}
+
+.modal__header,
+.modal__footer {
+  padding: 10px;
+}
+
+.modal__content {
+  padding: 10px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
 .modal__none {
   display: none;
 }

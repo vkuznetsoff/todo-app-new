@@ -72,30 +72,13 @@ const Project = () => {
               (f) => f.status === statuses.DONE
             )}
           />
-          <button onClick={() => setShowModal(true)}>OPEN</button>
-
-          {/* <TargetBox currentTodos={currentTodos} />
-          <TargetBox currentTodos={currentTodos} /> */}
-          {/* 
-          <div className="todos__column">
-            <div className="column__title">В работе</div>
-            {currentTodos.map((todo) => (
-              <Todo key={todo.id} todo={todo} />
-            ))}
-            <TargetBox />
-          </div>
-
-          <div className="todos__column">
-            <div className="column__title">Завершенные</div>
-            {currentTodos.map((todo) => (
-              <Todo key={todo.id} todo={todo} />
-            ))}
-            <TargetBox />
-          </div>
-           */}
         </div>
 
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        <button onClick={() => setShowModal(true)}>OPEN</button>
+        <Modal showModal={showModal} setShowModal={setShowModal}>
+          <h2>Hello</h2>
+          <div>YOYOY</div>
+        </Modal>
       </div>
     </div>
   );

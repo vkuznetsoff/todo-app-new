@@ -1,8 +1,12 @@
 import cn from "classnames";
 import "./Modal.css";
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, setShowModal, ...props }) => {
   const closeModalHandler = () => {
+    setShowModal(!showModal);
+  };
+
+  const submitModalHandler = () => {
     setShowModal(!showModal);
   };
   return (
@@ -16,10 +20,11 @@ const Modal = ({ showModal, setShowModal }) => {
           <div class="modal__title">Заголовок</div>
         </div>
 
-        <div class="modal__content">Содержимое</div>
+        <div class="modal__content">{props.children}</div>
 
         <div class="modal__footer">
           <button onClick={closeModalHandler}>Закрыть</button>
+          <button onClick={submitModalHandler}>Сохранить</button>
         </div>
       </div>
     </div>
