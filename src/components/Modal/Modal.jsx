@@ -1,13 +1,15 @@
 import cn from "classnames";
 import "./Modal.css";
 
-const Modal = ({ showModal, setShowModal, ...props }) => {
+const Modal = ({ showModal, setShowModal, setModalBody, ...props }) => {
   const closeModalHandler = () => {
     setShowModal(!showModal);
+    setModalBody(null);
   };
 
   const submitModalHandler = () => {
     setShowModal(!showModal);
+    setModalBody(null);
   };
   return (
     <div

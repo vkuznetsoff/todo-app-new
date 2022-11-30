@@ -11,8 +11,11 @@
 }
 
 .modal__container {
+  margin-top: 100px;
+  align-self: flex-start;
   background-color: antiquewhite;
-  width: 500px;
+  width: 400px;
+  min-height: 500px;
 }
 
 .modal__header,

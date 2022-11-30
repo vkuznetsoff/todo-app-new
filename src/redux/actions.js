@@ -44,7 +44,6 @@ export const changeProjectStatus = (project_id) => {
 };
 
 export const changeTodoStatus = (projectID, todo, newStatus) => {
-  debugger;
   return {
     type: CHANGE_TODO_STATUS,
     payload: { projectID, todo, newStatus },
