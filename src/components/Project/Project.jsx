@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import TargetBox from "./TargetBox";
 import { statuses } from "./../../redux/todoReducer";
 import Modal from "../Modal/Modal";
+import { useDispatch } from "react-redux";
+import { getAllComments } from "../../redux/actions";
 
 const tbKeys = {
   QUEUE: "QUEUE",
@@ -17,12 +19,18 @@ const Project = () => {
 
   const projects = useSelector((state) => state.todoReducer);
   const currentTodos = projects.find((t) => t.id === projectID).todos;
-
+  const dispatch = useDispatch();
+  const allComments = useSelector((state) => state.commentReducer);
+  console.log(allComments);
   const handleAddButton = () => {};
 
   // useEffect(() => {
   //   getTodos(String(projectID));
   // }, [projectID]);
+
+  useEffect(() => {
+    dispatch(getAllComments());
+  }, []);
 
   return (
     <div className="project">

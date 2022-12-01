@@ -5,13 +5,24 @@ import {
   CHANGE_PROJECT_STATUS,
   CHANGE_TODO_STATUS,
   GET_TODOS,
+  GET__COMMENTS,
   REMOVE_TODO,
 } from "./actionsTypes";
+import { getComments } from "./api";
 
 export const addProject = (id, name, todos) => {
   return {
     type: ADD_PROJECT,
     payload: { id, name, todos },
+  };
+};
+
+export const getAllComments = () => {
+  let allComments = null;
+  getComments().then((data) => (allComments = data));
+  return {
+    type: GET__COMMENTS,
+    payload: { allComments },
   };
 };
 

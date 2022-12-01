@@ -3,9 +3,11 @@ import Comments from "./Comments";
 const CommentFrom = ({ currentTodoId }) => {
   return (
     <div>
-      <div>CommentFrom</div>
-      <div>{currentTodoId}</div>
-      <Comments currentTodoId={currentTodoId} />
+      <div className="comment__form">
+        <div className="comment__form__title">Комментарии:</div>
+
+        <Comments currentTodoId={currentTodoId} />
+      </div>
     </div>
   );
 };

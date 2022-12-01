@@ -19,10 +19,14 @@ const Comment = ({ comment, underComments }) => {
         </div>
       </div>
 
-      <div>
-        {underComments.map((c) => (
-          <div>{c.body}</div>
-        ))}
+      <div className="comment__undercomments">
+        { (underComments.length > 0) && 
+         
+              underComments.map((c) => (
+                <Comment key={c.id} comment={c} underComments={[]}/> ))
+        
+              }
+              
       </div>
     </div>
   );

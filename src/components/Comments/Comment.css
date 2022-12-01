@@ -28,3 +28,12 @@
   font-weight: 600;
   margin-right: 10px;
 }
+
+.comment__undercomments {
+  margin: 5px 15px;
+}
+
+.comment__form__title {
+  text-align: left;
+  font-weight: 700;
+}
