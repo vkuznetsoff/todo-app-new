@@ -17,9 +17,26 @@ export const addProject = (id, name, todos) => {
   };
 };
 
-export const getAllComments = () => {
-  let allComments = null;
-  getComments().then((data) => (allComments = data));
+// function fetchPosts(subreddit) {
+//   return (dispatch) => {
+//     dispatch(requestPosts(subreddit));
+//     return fetch(
+//       `https://www.reddit.com/r/${subreddit}.json`
+//     )
+//       .then((response) => response.json())
+//       .then((json) =>
+//         dispatch(receivePosts(subreddit, json))
+//       );
+//   };
+// }
+
+export const fetchComments = () => {
+  return (dispatch) => {
+    getComments().then((data) => dispatch(getAllComments(data)));
+  };
+};
+
+export const getAllComments = (allComments) => {
   return {
     type: GET__COMMENTS,
     payload: { allComments },

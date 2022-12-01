@@ -7,6 +7,6 @@ const rootReducer = combineReducers({
   commentReducer,
 });
 
-export type RootStateType = ReturnType<typeof rootReducer>;
+// export type RootStateType = ReturnType<typeof rootReducer>;
 
 export default rootReducer;

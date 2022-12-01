@@ -6,7 +6,7 @@ import TargetBox from "./TargetBox";
 import { statuses } from "./../../redux/todoReducer";
 import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
-import { getAllComments } from "../../redux/actions";
+import { fetchComments, getAllComments } from "../../redux/actions";
 
 const tbKeys = {
   QUEUE: "QUEUE",
@@ -15,22 +15,20 @@ const tbKeys = {
 };
 const Project = () => {
   const { projectID } = useParams();
-  // const [showModal, setShowModal] = useState(false);
 
   const projects = useSelector((state) => state.todoReducer);
   const currentTodos = projects.find((t) => t.id === projectID).todos;
   const dispatch = useDispatch();
-  const allComments = useSelector((state) => state.commentReducer);
-  console.log(allComments);
-  const handleAddButton = () => {};
+
+  //   const allComments = useSelector((state) => state.commentReducer.comments);
 
   // useEffect(() => {
-  //   getTodos(String(projectID));
-  // }, [projectID]);
+  //     dispatch(fetchComments());
+  //   }, []);
 
-  useEffect(() => {
-    dispatch(getAllComments());
-  }, []);
+  // console.log("allComments", allComments);
+
+  const handleAddButton = () => {};
 
   return (
     <div className="project">
@@ -71,12 +69,6 @@ const Project = () => {
             )}
           />
         </div>
-
-        {/* <button onClick={() => setShowModal(true)}>OPEN</button>
-        <Modal showModal={showModal} setShowModal={setShowModal}>
-          <h2>Hello</h2>
-          <div>YOYOY</div>
-        </Modal> */}
       </div>
     </div>
   );

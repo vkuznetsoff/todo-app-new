@@ -1,26 +1,30 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { getComments } from "./../../redux/api";
 import Comment from "./Comment";
 import EditCommentFrom from "./EditCommentForm";
 
 const Comments = ({ currentTodoId }) => {
-  const [comments, setComments] = useState([]);
+  const allComments = useSelector((state) => state.commentReducer.comments);
+  debugger;
 
-  const rootComments = comments.filter(
+  // const [comments, setComments] = useState([allComments]);
+
+  const rootComments = allComments.filter(
     (c) => c.parentId === null && c.todoID === currentTodoId
   );
-  // console.log("comments", comments);
+  console.log("comments", allComments);
   // console.log("rootComments", rootComments);
 
   const getUnderComments = (commentId) => {
-    return comments.filter((c) => c.parentId === commentId);
+    return allComments.filter((c) => c.parentId === commentId);
   };
 
   const addComment = (todoID, parentID) => {};
 
   useEffect(() => {
-    getComments().then((data) => setComments(data));
+    // getComments().then((data) => setComments(data));
   }, []);
 
   return (

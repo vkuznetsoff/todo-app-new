@@ -3,10 +3,14 @@ import { GET__COMMENTS } from "./actionsTypes";
 const initState = {
   comments: [],
 };
+
 const commentReducer = (state = initState, action) => {
   switch (action.type) {
     case GET__COMMENTS:
-      return { ...state, comments: action.payload };
+      return {
+        ...state,
+        comments: action.payload.allComments,
+      };
     default:
       return state;
   }
