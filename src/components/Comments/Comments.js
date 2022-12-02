@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { addComment } from "../../redux/commentActions";
+import { addComment, deleteComment } from "../../redux/commentActions";
 import { getComments } from "./../../redux/api";
 import Comment from "./Comment";
 import EditCommentFrom from "./EditCommentForm.jsx";
@@ -25,8 +25,11 @@ const Comments = ({ currentTodoId }) => {
 
   // const addCommentHandle = (todoID = currentTodoId, parentID, text) => {
   const addCommentHandle = (text) => {
-    debugger;
     dispatch(addComment(currentTodoId, null, text));
+  };
+
+  const deleteCommentHandle = (commentId) => {
+    dispatch(deleteComment(commentId));
   };
 
   useEffect(() => {
@@ -48,6 +51,7 @@ const Comments = ({ currentTodoId }) => {
             key={c.id}
             comment={c}
             underComments={getUnderComments(c.id)}
+            deleteComment={deleteCommentHandle}
           />
           // <div key={c.id}>
           //   {c.username}: {c.body}

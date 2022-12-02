@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
+// import { deleteComment } from "../../redux/commentActions";
 import "./Comment.css";
 
-const Comment = ({ comment, underComments }) => {
-  console.log("underComments", underComments);
+const Comment = ({ comment, underComments, deleteComment }) => {
+  // console.log("underComments", underComments);
+  const dispatch = useDispatch();
+
+  // const deleteCommentHandle = (commentId) => {
+  //   dispatch(deleteComment(commentId));
+  // };
+
   return (
     <div className="comment">
       <div className="comment__container">
@@ -19,7 +27,12 @@ const Comment = ({ comment, underComments }) => {
           <div className="comment__actions">
             <div className="comment__action">Reply</div>
             <div className="comment__action">Edit</div>
-            <div className="comment__action">Delete</div>
+            <div
+              className="comment__action"
+              onClick={() => deleteComment(comment.id)}
+            >
+              Delete
+            </div>
           </div>
         </div>
       </div>

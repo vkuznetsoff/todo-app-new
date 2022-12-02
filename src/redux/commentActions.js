@@ -3,6 +3,7 @@ import uniqid from "uniqid";
 
 export const GET__COMMENTS = "GET__COMMENTS";
 export const ADD__COMMENT = "ADD__COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
 
 export const getAllComments = (allComments) => {
   return {
@@ -12,7 +13,6 @@ export const getAllComments = (allComments) => {
 };
 
 export const addComment = (todoID, parentID = null, text) => {
-  debugger;
   const date = new Date();
   const newComment = {
     id: uniqid(),
@@ -20,11 +20,18 @@ export const addComment = (todoID, parentID = null, text) => {
     username: "anonymous",
     todoID: todoID,
     parentId: parentID,
-    createdAt: new Date().toISOString(),
+    createdAt: new Date().toLocaleString(),
   };
   return {
     type: ADD__COMMENT,
     payload: newComment,
+  };
+};
+
+export const deleteComment = (commentId) => {
+  return {
+    type: DELETE_COMMENT,
+    payload: commentId,
   };
 };
 
