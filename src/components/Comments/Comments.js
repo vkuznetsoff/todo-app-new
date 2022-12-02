@@ -24,8 +24,8 @@ const Comments = ({ currentTodoId }) => {
   };
 
   // const addCommentHandle = (todoID = currentTodoId, parentID, text) => {
-  const addCommentHandle = (text) => {
-    dispatch(addComment(currentTodoId, null, text));
+  const addCommentHandle = (text, parentID = null) => {
+    dispatch(addComment(currentTodoId, parentID, text));
   };
 
   const deleteCommentHandle = (commentId) => {
@@ -44,6 +44,7 @@ const Comments = ({ currentTodoId }) => {
             currentTodoId={currentTodoId}
             handleSubmit={addCommentHandle}
             submitLabel={"Оставить комментарий"}
+            addComment={addCommentHandle}
           />
         </div>
         {rootComments.map((c) => (
@@ -51,7 +52,12 @@ const Comments = ({ currentTodoId }) => {
             key={c.id}
             comment={c}
             underComments={getUnderComments(c.id)}
+            getUnderComments={getUnderComments}
+            addComment={addCommentHandle}
             deleteComment={deleteCommentHandle}
+            parentID={c.parentId}
+            showReplyForm
+            setshowReplyForm
           />
           // <div key={c.id}>
           //   {c.username}: {c.body}

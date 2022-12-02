@@ -1,14 +1,21 @@
 import { useState } from "react";
 import "./EditCommentForm.css";
 
-const EditCommentFrom = ({ handleSubmit, submitLabel }) => {
+const EditCommentFrom = ({
+  handleSubmit,
+  submitLabel,
+  addComment,
+  showReplyForm,
+  setshowReplyForm,
+}) => {
   const [text, setText] = useState("");
   const isButtonDisabled = text.length === 0;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(text);
+    addComment(text);
     setText("");
+    setshowReplyForm(!showReplyForm);
   };
   return (
     <div className="editform">
