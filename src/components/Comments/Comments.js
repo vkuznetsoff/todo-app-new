@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { addComment } from "../../redux/commentActions";
 import { getComments } from "./../../redux/api";
 import Comment from "./Comment";
-import EditCommentFrom from "./EditCommentForm";
+import EditCommentFrom from "./EditCommentForm.jsx";
 
 const Comments = ({ currentTodoId }) => {
   const allComments = useSelector((state) => state.commentReducer.comments);
-  debugger;
+  const dispatch = useDispatch();
 
   // const [comments, setComments] = useState([allComments]);
 
@@ -21,7 +23,11 @@ const Comments = ({ currentTodoId }) => {
     return allComments.filter((c) => c.parentId === commentId);
   };
 
-  const addComment = (todoID, parentID) => {};
+  // const addCommentHandle = (todoID = currentTodoId, parentID, text) => {
+  const addCommentHandle = (text) => {
+    debugger;
+    dispatch(addComment(currentTodoId, null, text));
+  };
 
   useEffect(() => {
     // getComments().then((data) => setComments(data));
@@ -33,7 +39,7 @@ const Comments = ({ currentTodoId }) => {
         <div className="comments__content">
           <EditCommentFrom
             currentTodoId={currentTodoId}
-            handleSubmit={addComment}
+            handleSubmit={addCommentHandle}
             submitLabel={"Оставить комментарий"}
           />
         </div>

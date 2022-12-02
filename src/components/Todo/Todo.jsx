@@ -8,7 +8,7 @@ import TodoForm from "./TodoForm";
 import Comments from "../Comments/Comments";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { fetchComments } from "../../redux/actions";
+import { fetchComments } from "../../redux/commentActions";
 
 const COMMENTS = "COMMENTS";
 const EDIT_TODO = "EDIT_TODO";
@@ -66,7 +66,7 @@ const Todo = ({ todo }) => {
 
         <div class="todo__bottom">
           <div class="todo__comments" onClick={commentsButtonHandle}>
-            💭 Комментарии
+            {currentComments.length}💭Комментарии
           </div>
         </div>
       </div>

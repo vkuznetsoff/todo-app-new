@@ -17,32 +17,6 @@ export const addProject = (id, name, todos) => {
   };
 };
 
-// function fetchPosts(subreddit) {
-//   return (dispatch) => {
-//     dispatch(requestPosts(subreddit));
-//     return fetch(
-//       `https://www.reddit.com/r/${subreddit}.json`
-//     )
-//       .then((response) => response.json())
-//       .then((json) =>
-//         dispatch(receivePosts(subreddit, json))
-//       );
-//   };
-// }
-
-export const fetchComments = () => {
-  return (dispatch) => {
-    getComments().then((data) => dispatch(getAllComments(data)));
-  };
-};
-
-export const getAllComments = (allComments) => {
-  return {
-    type: GET__COMMENTS,
-    payload: { allComments },
-  };
-};
-
 export const getTodos = (id) => {
   return {
     type: GET_TODOS,

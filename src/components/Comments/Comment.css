@@ -33,6 +33,19 @@
   margin: 5px 15px;
 }
 
+.comment__actions {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+
+  justify-content: flex-end;
+}
+
+.comment__action {
+  font-weight: 600;
+  font-size: 10pt;
+  margin-right: 10px;
+}
 .comment__form__title {
   text-align: left;
   font-weight: 700;
