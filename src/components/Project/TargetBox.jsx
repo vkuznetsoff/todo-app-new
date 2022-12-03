@@ -6,12 +6,16 @@ import { SymbolDisplayPartKind } from "typescript";
 import { useDispatch } from "react-redux";
 import { changeTodoStatus } from "./../../redux/actions";
 
-const TargetBox = ({ projectID, targetID, title, currentTodos }) => {
+const TargetBox = ({
+  projectID,
+  targetID,
+  title,
+  currentTodos,
+  allComments,
+}) => {
   const dispatch = useDispatch();
 
   const onDrop = (item) => {
-    console.log(item);
-    console.log(projectID);
     dispatch(changeTodoStatus(projectID, item, targetID));
   };
 
@@ -36,7 +40,11 @@ const TargetBox = ({ projectID, targetID, title, currentTodos }) => {
       <div className="todos__column">
         <div className="column__title">{title}</div>
         {currentTodos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo
+            key={todo.id}
+            todo={todo}
+            currentComments={allComments.filter((c) => c.todoID === todo.id)}
+          />
         ))}
       </div>
     </div>

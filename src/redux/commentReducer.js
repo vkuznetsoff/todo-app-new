@@ -9,7 +9,7 @@ const commentReducer = (state = initState, action) => {
     case GET__COMMENTS:
       return {
         ...state,
-        comments: action.payload.allComments,
+        comments: [...state.comments, action.payload], //action.payload.allComments,
       };
 
     case ADD__COMMENT:

@@ -5,8 +5,7 @@ const EditCommentFrom = ({
   handleSubmit,
   submitLabel,
   addComment,
-  showReplyForm,
-  setshowReplyForm,
+  setActiveReplyID,
 }) => {
   const [text, setText] = useState("");
   const isButtonDisabled = text.length === 0;
@@ -15,7 +14,7 @@ const EditCommentFrom = ({
     e.preventDefault();
     addComment(text);
     setText("");
-    setshowReplyForm(!showReplyForm);
+    setActiveReplyID(null);
   };
   return (
     <div className="editform">

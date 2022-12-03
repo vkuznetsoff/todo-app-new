@@ -13,19 +13,19 @@ import { fetchComments } from "../../redux/commentActions";
 const COMMENTS = "COMMENTS";
 const EDIT_TODO = "EDIT_TODO";
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, currentComments }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState(null);
 
   const dispatch = useDispatch();
 
-  const allComments = useSelector((state) => state.commentReducer.comments);
+  // const allComments = useSelector((state) => state.commentReducer.comments);
 
-  const currentComments = allComments.filter((c) => c.todoID === todo.id);
+  // const currentComments = allComments.filter((c) => c.todoID === todo.id);
 
-  useEffect(() => {
-    dispatch(fetchComments());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchComments());
+  // }, []);
 
   // console.log("allComments", allComments);
   // console.log("currentComments", currentComments);

@@ -15,8 +15,8 @@ const ProjectList = () => {
   return (
     <div className="projectList">
       {state1.map((el) => (
-        <div>
-          <NavLink key={el.id} to={`/projects/${el.id}`} className={"navitem"}>
+        <div key={el.id}>
+          <NavLink to={`/projects/${el.id}`} className={"navitem"}>
             {el.name}
           </NavLink>
         </div>

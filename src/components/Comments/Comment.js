@@ -10,10 +10,16 @@ const Comment = ({
   underComments,
   getUnderComments,
   addComment,
+  deleteComment,
+  replyID,
+  activeReplyID,
+  setActiveReplyID,
 }) => {
   // console.log("underComments", underComments);
   const [showReplyForm, setshowReplyForm] = useState(false);
-  const replyID = parentID ? parentID : comment.id;
+
+  const isReply = comment.id === activeReplyID;
+  // const replyID = parentID ? parentID : comment.id;
 
   // const isReplying =
   // activeComment &&
@@ -24,6 +30,10 @@ const Comment = ({
 
   const deleteCommentHandle = (commentId) => {
     dispatch(deleteComment(commentId));
+  };
+
+  const replyButtonHandle = () => {
+    setActiveReplyID(comment.id);
   };
 
   const addReplyHandle = (text, todoID, commentID) => {};
@@ -42,10 +52,20 @@ const Comment = ({
           </div>
 
           <div className="comment__text">{comment.body}</div>
+
+          {isReply && (
+            <EditCommentFrom
+              currentTodoId={comment.todoID}
+              addComment={(text) => addComment(text, comment.id)}
+              submitLabel={"Ответить"}
+              setActiveReplyID={setActiveReplyID}
+            />
+          )}
+
           <div className="comment__actions">
             <div
               className="comment__action"
-              onClick={() => setshowReplyForm(true)}
+              onClick={() => replyButtonHandle()}
             >
               Reply
             </div>
@@ -57,16 +77,6 @@ const Comment = ({
               Delete
             </div>
           </div>
-
-          {showReplyForm && (
-            <EditCommentFrom
-              currentTodoId={comment.todoID}
-              addComment={(text) => addComment(text, replyID)}
-              submitLabel={"Ответить"}
-              showReplyForm={showReplyForm}
-              setshowReplyForm={setshowReplyForm}
-            />
-          )}
         </div>
       </div>
 
@@ -76,9 +86,13 @@ const Comment = ({
             <Comment
               key={c.id}
               comment={c}
-              underComments={() => getUnderComments(comment)}
-              showReplyForm={showReplyForm}
-              setshowReplyForm={setshowReplyForm}
+              underComments={getUnderComments(c.id)}
+              activeReplyID={activeReplyID}
+              setActiveReplyID={setActiveReplyID}
+              addComment={addComment}
+              deleteComment={deleteComment}
+              getUnderComments={getUnderComments}
+              parentID={c.parentId}
             />
           ))}
       </div>

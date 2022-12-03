@@ -25,12 +25,15 @@ const Comments = ({ currentTodoId }) => {
 
   // const addCommentHandle = (todoID = currentTodoId, parentID, text) => {
   const addCommentHandle = (text, parentID = null) => {
+    // debugger;
     dispatch(addComment(currentTodoId, parentID, text));
   };
 
   const deleteCommentHandle = (commentId) => {
     dispatch(deleteComment(commentId));
   };
+
+  const [activeReplyID, setActiveReplyID] = useState(null);
 
   useEffect(() => {
     // getComments().then((data) => setComments(data));
@@ -56,8 +59,8 @@ const Comments = ({ currentTodoId }) => {
             addComment={addCommentHandle}
             deleteComment={deleteCommentHandle}
             parentID={c.parentId}
-            showReplyForm
-            setshowReplyForm
+            activeReplyID={activeReplyID}
+            setActiveReplyID={setActiveReplyID}
           />
           // <div key={c.id}>
           //   {c.username}: {c.body}

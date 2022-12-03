@@ -6,7 +6,7 @@ import TargetBox from "./TargetBox";
 import { statuses } from "./../../redux/todoReducer";
 import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
-import { fetchComments, getAllComments } from "../../redux/actions";
+import { fetchComments } from "../../redux/commentActions";
 
 const tbKeys = {
   QUEUE: "QUEUE",
@@ -18,13 +18,18 @@ const Project = () => {
 
   const projects = useSelector((state) => state.todoReducer);
   const currentTodos = projects.find((t) => t.id === projectID).todos;
+
+  const allComments = useSelector((state) => state.commentReducer.comments);
+
+  // const currentComments = allComments.filter((c) => c.todoID === todo.id);
+
   const dispatch = useDispatch();
 
   //   const allComments = useSelector((state) => state.commentReducer.comments);
 
-  // useEffect(() => {
-  //     dispatch(fetchComments());
-  //   }, []);
+  useEffect(() => {
+    dispatch(fetchComments());
+  }, []);
 
   // console.log("allComments", allComments);
 
@@ -48,6 +53,7 @@ const Project = () => {
             currentTodos={currentTodos.filter(
               (f) => f.status === statuses.QUEUE
             )}
+            allComments={allComments}
           />
 
           <TargetBox
@@ -58,6 +64,7 @@ const Project = () => {
             currentTodos={currentTodos.filter(
               (f) => f.status === statuses.DEVELOPMENT
             )}
+            allComments={allComments}
           />
           <TargetBox
             key={tbKeys.DONE}
@@ -67,6 +74,7 @@ const Project = () => {
             currentTodos={currentTodos.filter(
               (f) => f.status === statuses.DONE
             )}
+            allComments={allComments}
           />
         </div>
       </div>
