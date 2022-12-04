@@ -83,7 +83,7 @@ const Todo = ({ todo, currentComments }) => {
         {modalBody === COMMENTS && (
           <CommentFrom currentTodoId={todo.id} comments={currentComments} />
         )}
-        {modalBody === EDIT_TODO && <TodoForm />}
+        {modalBody === EDIT_TODO && <TodoForm todo={todo} />}
       </Modal>
     </div>
   );

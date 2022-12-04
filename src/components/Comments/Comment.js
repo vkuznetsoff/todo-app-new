@@ -69,7 +69,7 @@ const Comment = ({
             >
               Reply
             </div>
-            <div className="comment__action">Edit</div>
+            {/* <div className="comment__action">Edit</div> */}
             <div
               className="comment__action"
               onClick={() => deleteCommentHandle(comment.id)}

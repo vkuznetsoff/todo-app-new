@@ -13,7 +13,6 @@ export const getAllComments = (allComments) => {
 };
 
 export const addComment = (todoID, parentID = null, text) => {
-  const date = new Date();
   const newComment = {
     id: uniqid(),
     body: text,
