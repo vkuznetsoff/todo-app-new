@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import { TODO } from "../dnd/dndTypes";
 import Modal from "../Modal/Modal";
 import { useEffect, useState } from "react";
-import CommentFrom from "./../Comments/CommentForm";
+import CommentFrom from "./TodoForm2";
 import TodoForm from "./TodoForm";
 import Comments from "../Comments/Comments";
 import { useDispatch } from "react-redux";
@@ -80,10 +80,16 @@ const Todo = ({ todo, currentComments }) => {
         <div>YOYOY</div> */}
         {/* <CommentFrom /> */}
 
-        {modalBody === COMMENTS && (
+        {/* {modalBody === COMMENTS && (
           <CommentFrom currentTodoId={todo.id} comments={currentComments} />
+          <
         )}
-        {modalBody === EDIT_TODO && <TodoForm todo={todo} />}
+        {modalBody === EDIT_TODO && <TodoForm todo={todo} />} */}
+        {modalBody === EDIT_TODO && (
+          <TodoForm todo={todo}>
+            <Comments currentTodoId={todo.id} comments={currentComments} />
+          </TodoForm>
+        )}
       </Modal>
     </div>
   );

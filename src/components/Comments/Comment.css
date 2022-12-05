@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.comments__title {
+  font-weight: 700;
+}
+
 .comment__container {
   display: flex;
   flex-direction: row;

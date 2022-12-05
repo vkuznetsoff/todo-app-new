@@ -42,3 +42,8 @@
   padding: 10px;
   vertical-align: baseline;
 }
+
+.todoform__footer {
+  border-top: 1px solid grey;
+  margin-top: 50px;
+}

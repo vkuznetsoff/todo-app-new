@@ -25,7 +25,7 @@ const Comments = ({ currentTodoId }) => {
 
   // const addCommentHandle = (todoID = currentTodoId, parentID, text) => {
   const addCommentHandle = (text, parentID = null) => {
-    // debugger;
+    debugger;
     dispatch(addComment(currentTodoId, parentID, text));
   };
 
@@ -41,32 +41,31 @@ const Comments = ({ currentTodoId }) => {
 
   return (
     <div className="comments">
-      <div className="comments__title">
-        <div className="comments__content">
-          <EditCommentFrom
-            currentTodoId={currentTodoId}
-            handleSubmit={addCommentHandle}
-            submitLabel={"Оставить комментарий"}
-            addComment={addCommentHandle}
-          />
-        </div>
-        {rootComments.map((c) => (
-          <Comment
-            key={c.id}
-            comment={c}
-            underComments={getUnderComments(c.id)}
-            getUnderComments={getUnderComments}
-            addComment={addCommentHandle}
-            deleteComment={deleteCommentHandle}
-            parentID={c.parentId}
-            activeReplyID={activeReplyID}
-            setActiveReplyID={setActiveReplyID}
-          />
-          // <div key={c.id}>
-          //   {c.username}: {c.body}
-          // </div>
-        ))}
+      <div className="comments__title"> Комментарии</div>
+      <div className="comments__content">
+        <EditCommentFrom
+          currentTodoId={currentTodoId}
+          // handleSubmit={addCommentHandle}
+          submitLabel={"Оставить комментарий"}
+          addComment={addCommentHandle}
+        />
       </div>
+      {rootComments.map((c) => (
+        <Comment
+          key={c.id}
+          comment={c}
+          underComments={getUnderComments(c.id)}
+          getUnderComments={getUnderComments}
+          addComment={addCommentHandle}
+          deleteComment={deleteCommentHandle}
+          parentID={c.parentId}
+          activeReplyID={activeReplyID}
+          setActiveReplyID={setActiveReplyID}
+        />
+        // <div key={c.id}>
+        //   {c.username}: {c.body}
+        // </div>
+      ))}
     </div>
   );
 };
