@@ -49,7 +49,7 @@ export const addTodoAction = (title, text, projectID) => {
   };
 };
 
-export const removeTodo = (todoID, projectFROM) => {
+export const removeTodoAction = (todoID, projectFROM) => {
   return {
     type: REMOVE_TODO,
     payload: { todoID, projectFROM },

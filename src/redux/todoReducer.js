@@ -196,6 +196,14 @@ const todoReducer = (state = initialState, action) => {
         } else return project;
       });
 
+    case REMOVE_TODO:
+      const { todoID, projectFROM } = action.payload;
+      return state.map((p) => {
+        if (p.id === projectFROM) {
+          return { ...p, todos: p.todos.filter((i) => i.id !== todoID) };
+        } else return p;
+      });
+
     case GET_TODOS:
       return [...state.filter((s) => s.id === String(action.payload))];
 
@@ -211,14 +219,6 @@ const todoReducer = (state = initialState, action) => {
             ],
           };
         } else return pr;
-      });
-
-    case REMOVE_TODO:
-      const { todoID, projectFROM } = action.payload;
-      return state.map((p) => {
-        if (p.id === projectFROM) {
-          return { ...p, items: p.items.filter((i) => i.id !== todoID) };
-        } else return p;
       });
 
     // case ADD_TODO:

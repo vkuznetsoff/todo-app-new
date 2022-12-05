@@ -9,11 +9,12 @@ import Comments from "../Comments/Comments";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { fetchComments } from "../../redux/commentActions";
+import { removeTodoAction } from "../../redux/actions";
 
 const COMMENTS = "COMMENTS";
 const EDIT_TODO = "EDIT_TODO";
 
-const Todo = ({ todo, currentComments }) => {
+const Todo = ({ todo, currentComments, projectID }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState(null);
 
@@ -38,9 +39,13 @@ const Todo = ({ todo, currentComments }) => {
     }),
   }));
 
-  const todoButtonHandle = () => {
+  const editTodoHandle = () => {
     setModalBody(EDIT_TODO);
     setShowModal(!showModal);
+  };
+
+  const removeTodoHandle = () => {
+    dispatch(removeTodoAction(todo.id, projectID));
   };
 
   const commentsButtonHandle = () => {
@@ -59,14 +64,26 @@ const Todo = ({ todo, currentComments }) => {
         <div class="todo__body">
           <div class="todo__title">{todo.title}</div>
           {/* <div class="todo__button" >...</div> */}
-          <div class="todo__button" onClick={todoButtonHandle}>
-            ...
+          <div class="todo__buttons">
+            <img
+              alt="edit"
+              src="/edit_icon.png"
+              width={15}
+              onClick={editTodoHandle}
+            />
+            <img
+              alt="remove"
+              src="/remove_icon.png"
+              width={15}
+              onClick={removeTodoHandle}
+            />
           </div>
         </div>
 
         <div class="todo__bottom">
           <div class="todo__comments" onClick={commentsButtonHandle}>
-            {currentComments.length}💭Комментарии
+            {currentComments.length}
+            <img alt="comments" src="/comments.png" width={20} />
           </div>
         </div>
       </div>

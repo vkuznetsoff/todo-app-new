@@ -43,6 +43,7 @@ const TargetBox = ({
           <Todo
             key={todo.id}
             todo={todo}
+            projectID={projectID}
             currentComments={allComments.filter((c) => c.todoID === todo.id)}
           />
         ))}
