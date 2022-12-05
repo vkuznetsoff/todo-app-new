@@ -25,7 +25,6 @@ const Comments = ({ currentTodoId }) => {
 
   // const addCommentHandle = (todoID = currentTodoId, parentID, text) => {
   const addCommentHandle = (text, parentID = null) => {
-    debugger;
     dispatch(addComment(currentTodoId, parentID, text));
   };
 

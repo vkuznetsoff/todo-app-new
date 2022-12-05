@@ -1,24 +1,24 @@
 import { useState } from "react";
 
-const TodoForm = ({ todo, ...props }) => {
-  // const [title, setTitle] = useState("");
+const EditTodoForm = ({ todo, ...props }) => {
+  const [title, setTitle] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
   };
   return (
-    <form className="todoform" onSubmit={onSubmit}>
-      <div className="todoform__header">{todo.title} </div>
-      <div className="todoform__container">Форма задач</div>
-      <div className="todoform__title"></div>
-      <div className="todoform_text"></div>
-
-      <div className="todoform__footer">{props.children}</div>
-    </form>
+    <div className="todoform" onSubmit={onSubmit}>
+      <input
+        type={"text"}
+        name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      ></input>
+    </div>
   );
 };
 
-export default TodoForm;
+export default EditTodoForm;
 
 // Номер задачи
 // Заголовок

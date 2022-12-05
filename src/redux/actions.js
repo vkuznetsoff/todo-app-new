@@ -8,7 +8,10 @@ import {
   GET__COMMENTS,
   REMOVE_TODO,
 } from "./actionsTypes";
+
+import uniqid from "uniqid";
 import { getComments } from "./api";
+import { statuses } from "./todoReducer";
 
 export const addProject = (id, name, todos) => {
   return {
@@ -24,10 +27,25 @@ export const getTodos = (id) => {
   };
 };
 
-export const addTodo = (todo) => {
+export const addTodoAction = (title, text, projectID) => {
+  const newTodo = {
+    id: uniqid(),
+    title: title,
+    status: statuses.QUEUE,
+    number: "",
+    text: text,
+    createdAt: new Date().toLocaleString(),
+    timeInProgress: "",
+    doneAt: "",
+    priority: null,
+    attachments: "",
+    subtodos: [],
+    done: false,
+  };
+
   return {
     type: ADD_TODO,
-    payload: todo,
+    payload: { newTodo, projectID },
   };
 };
 

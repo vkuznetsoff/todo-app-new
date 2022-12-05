@@ -185,19 +185,24 @@ const todoReducer = (state = initialState, action) => {
     case ADD_PROJECT:
       return [...state, action.payload];
 
+    case ADD_TODO:
+      debugger;
+      return state.map((project) => {
+        if (project.id === action.payload.projectID) {
+          return {
+            ...project,
+            todos: [...project.todos, action.payload.newTodo],
+          };
+        } else return project;
+      });
+
     case GET_TODOS:
       return [...state.filter((s) => s.id === String(action.payload))];
 
     case CHANGE_TODO_STATUS:
-      debugger;
       const { projectID, todo, newStatus } = action.payload;
       return state.map((pr) => {
         if (pr.id === projectID) {
-          // const newTodos = pr.todos.map(t => {
-          //   if (t.id === todo.id) {
-          //     return {...t, status: newStatus}
-          //   } else return t
-          // })
           return {
             ...pr,
             todos: [

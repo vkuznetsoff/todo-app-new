@@ -7,6 +7,8 @@ import { statuses } from "./../../redux/todoReducer";
 import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
 import { fetchComments } from "../../redux/commentActions";
+import AddTodoForm from "../Todo/AddTodoForm/AddTodoForm";
+import { addTodoAction } from "../../redux/actions";
 
 const tbKeys = {
   QUEUE: "QUEUE",
@@ -15,6 +17,7 @@ const tbKeys = {
 };
 const Project = () => {
   const { projectID } = useParams();
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const projects = useSelector((state) => state.todoReducer);
   const currentTodos = projects.find((t) => t.id === projectID).todos;
@@ -33,16 +36,30 @@ const Project = () => {
 
   // console.log("allComments", allComments);
 
-  const handleAddButton = () => {};
+  const handleAddTodoButton = () => {
+    setShowAddForm(!showAddForm);
+  };
+
+  const addTodo = (text, title) => {
+    dispatch(addTodoAction(text, title, projectID));
+  };
 
   return (
     <div className="project">
       <div className="project__container">
         <div className="project__title">Проект: {projectID}</div>
 
-        <div className="project__button" onClick={handleAddButton}>
+        <div className="project__button" onClick={handleAddTodoButton}>
           + Добавить задачу
         </div>
+
+        {showAddForm && (
+          <AddTodoForm
+            addTodo={addTodo}
+            showAddForm={showAddForm}
+            setShowAddForm={setShowAddForm}
+          />
+        )}
 
         <div className="project__todos">
           <TargetBox
