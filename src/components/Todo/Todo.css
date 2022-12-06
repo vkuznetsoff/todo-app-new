@@ -3,33 +3,59 @@
 
 .todo__container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   background-color: antiquewhite;
   border: 1px solid rgba(120, 120, 120, 0.7);
   border-radius: 15px;
+  padding: 5px 0;
+}
+
+.todo__container:hover {
+  filter: brightness(80%);
 }
 .todo__body {
   display: flex;
-  height: 50px;
+  flex-direction: column;
+  min-height: 50px;
   width: 100%;
-  flex-direction: row;
   align-items: center;
 
-  /* margin-top: 10px; */
+  align-items: flex-start;
+
+  margin-left: 15px;
 }
+
+.todo__info {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
 .todo__title {
   width: 70%;
   text-align: start;
-  margin-left: 10px;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.todo__details {
+  font-size: 0.7rem;
+  width: 100%;
+  display: flex;
+  color: cadetblue;
+  font-weight: 500;
+}
+
 .todo__buttons {
   opacity: 20%;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
 }
 
 .todo__buttons:hover {
@@ -40,13 +66,12 @@
   font-weight: 800;
   cursor: pointer;
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .todo__bottom {
   padding: 5px 0;
   /* width: 100%; */
-
   display: flex;
   width: 100%;
   /* align-items: flex-start; */
@@ -57,11 +82,9 @@
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  padding: 0 10px;
+
   align-items: center;
   gap: 5px;
-  /* justify-content: last baseline; */
-  /* vertical-align: baseline; */
 }
 
 .todoform__footer {

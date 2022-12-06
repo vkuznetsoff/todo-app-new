@@ -27,6 +27,12 @@ export const statuses = {
   DONE: "DONE",
 };
 
+export const statusesRU = {
+  QUEUE: "В очереди",
+  DEVELOPMENT: "В работе",
+  DONE: "Выполнено",
+};
+
 export const priority = {
   HIGH: "HIGH",
   MEDIUM: "MEDIUM",
@@ -121,7 +127,7 @@ const initialState = [
         text: "",
         createdAt: "2022-12-03",
         timeInProgress: "",
-        doneAt: "",
+        doneAt: null,
         priority: priority.HIGH,
         attachments: "",
         subtodos: [],
@@ -135,7 +141,7 @@ const initialState = [
         text: "",
         createdAt: "2022-12-03",
         timeInProgress: "",
-        doneAt: "",
+        doneAt: null,
         priority: priority.HIGH,
         attachments: "",
         subtodos: [],
@@ -156,7 +162,7 @@ const initialState = [
         text: "",
         createdAt: "2022-12-03",
         timeInProgress: "",
-        doneAt: "",
+        doneAt: null,
         priority: priority.HIGH,
         attachments: "",
         subtodos: [],
@@ -170,7 +176,7 @@ const initialState = [
         text: "",
         createdAt: "2022-12-03",
         timeInProgress: "",
-        doneAt: "",
+        doneAt: null,
         priority: priority.HIGH,
         attachments: "",
         subtodos: [],
@@ -186,7 +192,6 @@ const todoReducer = (state = initialState, action) => {
       return [...state, action.payload];
 
     case ADD_TODO:
-      debugger;
       return state.map((project) => {
         if (project.id === action.payload.projectID) {
           return {
@@ -209,13 +214,21 @@ const todoReducer = (state = initialState, action) => {
 
     case CHANGE_TODO_STATUS:
       const { projectID, todo, newStatus } = action.payload;
+
       return state.map((pr) => {
         if (pr.id === projectID) {
           return {
             ...pr,
             todos: [
               ...pr.todos.filter((t) => t.id !== todo.id),
-              { ...todo, status: newStatus },
+              {
+                ...todo,
+                status: newStatus,
+                doneAt:
+                  newStatus === statuses.DONE
+                    ? new Date().toLocaleString()
+                    : "",
+              },
             ],
           };
         } else return pr;

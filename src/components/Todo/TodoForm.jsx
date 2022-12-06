@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { statuses, statusesRU } from "../../redux/todoReducer";
+
+import "./TodoForm.css";
 
 const TodoForm = ({ todo, ...props }) => {
   // const [title, setTitle] = useState("");
@@ -6,10 +9,41 @@ const TodoForm = ({ todo, ...props }) => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
+
+  const setStatusClass = (status) => {
+    switch (status) {
+      case statuses.QUEUE:
+        return "queue";
+      case statuses.DEVELOPMENT:
+        return "development";
+      case statuses.DONE:
+        return "done";
+      default:
+        return "";
+    }
+  };
+
   return (
     <form className="todoform" onSubmit={onSubmit}>
-      <div className="todoform__header">{todo.title} </div>
-      <div className="todoform__container">Форма задач</div>
+      <div className="todoform__header">
+        <div class="header__content">
+          <div className={`header__status ${setStatusClass(todo.status)}`}>
+            {statusesRU[todo.status]}
+          </div>
+          {todo.doneAt && <div class="todoform__details">{todo.doneAt}</div>}
+        </div>
+
+        {/* <div className="header__column">12</div> */}
+
+        <div className="header__column">
+          <div className="todoform__title">{todo.title} </div>
+          <div className="todoform__details ">
+            Дата создания: {todo.createdAt}
+          </div>
+        </div>
+      </div>
+
+      <div className="todoform__text">{todo.text}</div>
       <div className="todoform__title"></div>
       <div className="todoform_text"></div>
 

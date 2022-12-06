@@ -18,6 +18,12 @@ const Todo = ({ todo, currentComments, projectID }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState(null);
 
+  const [timeInProgress, setTimeInProgress] = useState(
+    new Date().getTime() - new Date(todo.createdAt).getTime()
+  );
+
+  console.log("timeInProgress", timeInProgress);
+
   const dispatch = useDispatch();
 
   // const allComments = useSelector((state) => state.commentReducer.comments);
@@ -60,31 +66,34 @@ const Todo = ({ todo, currentComments, projectID }) => {
       }}
       className="todo"
     >
-      <div class="todo__container">
+      <div class="todo__container" onClick={editTodoHandle}>
         <div class="todo__body">
-          <div class="todo__title">{todo.title}</div>
-          {/* <div class="todo__button" >...</div> */}
-          <div class="todo__buttons">
-            <img
-              alt="edit"
-              src="/edit_icon.png"
-              width={15}
-              onClick={editTodoHandle}
-            />
-            <img
-              alt="remove"
-              src="/remove_icon.png"
-              width={15}
-              onClick={removeTodoHandle}
-            />
+          <div class="todo__info">
+            <div class="todo__title">{todo.title}</div>
+            <div class="todo__details">{todo.createdAt}</div>
+          </div>
+
+          <div class="todo__bottom">
+            <div class="todo__comments" onClick={commentsButtonHandle}>
+              {currentComments.length}
+              <img alt="comments" src="/comments.png" width={20} />
+            </div>
           </div>
         </div>
 
-        <div class="todo__bottom">
-          <div class="todo__comments" onClick={commentsButtonHandle}>
-            {currentComments.length}
-            <img alt="comments" src="/comments.png" width={20} />
-          </div>
+        <div class="todo__buttons">
+          <img
+            alt="edit"
+            src="/edit_icon.png"
+            width={15}
+            onClick={editTodoHandle}
+          />
+          <img
+            alt="remove"
+            src="/remove_icon.png"
+            width={15}
+            onClick={removeTodoHandle}
+          />
         </div>
       </div>
 

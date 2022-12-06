@@ -1,0 +1,56 @@
+.todoform {
+  text-align: left;
+}
+
+.todoform__header {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(120, 120, 120, 0.7);
+  /* padding: 10px 0px; */
+}
+
+.header__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__content .todoform__details {
+  color: #113a92ce;
+}
+
+.todoform__title {
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.header__status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  min-width: fit-content;
+}
+
+.todoform__details {
+  font-size: 0.7rem;
+  width: 100%;
+  display: flex;
+  color: cadetblue;
+  font-weight: 500;
+}
+
+.queue {
+  background-color: #ff9933;
+}
+
+.development {
+  background-color: #138808;
+}
+
+.done {
+  background-color: #113a92ce;
+  color: antiquewhite;
+}
