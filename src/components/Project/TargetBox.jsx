@@ -12,6 +12,8 @@ const TargetBox = ({
   title,
   currentTodos,
   allComments,
+  setDoneAt,
+  doneAt,
 }) => {
   const dispatch = useDispatch();
 
@@ -45,6 +47,8 @@ const TargetBox = ({
             todo={todo}
             projectID={projectID}
             currentComments={allComments.filter((c) => c.todoID === todo.id)}
+            setDoneAt={setDoneAt}
+            doneAt={doneAt}
           />
         ))}
       </div>

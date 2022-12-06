@@ -27,7 +27,7 @@ export const getTodos = (id) => {
   };
 };
 
-export const addTodoAction = (title, text, projectID) => {
+export const addTodoAction = (title, text, projectID, doneAt) => {
   const newTodo = {
     id: uniqid(),
     title: title,
@@ -36,7 +36,7 @@ export const addTodoAction = (title, text, projectID) => {
     text: text,
     createdAt: new Date().toLocaleString(),
     timeInProgress: "",
-    doneAt: "",
+    doneAt: new Date(doneAt).toLocaleString(),
     priority: null,
     attachments: "",
     subtodos: [],

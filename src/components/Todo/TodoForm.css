@@ -54,3 +54,7 @@
   background-color: #113a92ce;
   color: antiquewhite;
 }
+
+.date__calendar {
+  max-width: 50px;
+}

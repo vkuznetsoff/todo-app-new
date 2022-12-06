@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { statuses, statusesRU } from "../../redux/todoReducer";
+import TodoDate from "../TodoDate/TodoDate";
 
 import "./TodoForm.css";
 
-const TodoForm = ({ todo, ...props }) => {
+const TodoForm = ({ todo, setDoneAt, doneAt, ...props }) => {
   // const [title, setTitle] = useState("");
 
   const onSubmit = (e) => {
@@ -44,8 +45,13 @@ const TodoForm = ({ todo, ...props }) => {
       </div>
 
       <div className="todoform__text">{todo.text}</div>
-      <div className="todoform__title"></div>
-      <div className="todoform_text"></div>
+
+      <div className="todoform_date">
+        <div>Дата окончания: </div>
+        <div className="date__calendar">
+          <TodoDate setDoneAt={setDoneAt} doneAt={doneAt} />
+        </div>
+      </div>
 
       <div className="todoform__footer">{props.children}</div>
     </form>

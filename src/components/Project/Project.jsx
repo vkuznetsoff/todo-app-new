@@ -28,7 +28,7 @@ const Project = () => {
 
   const dispatch = useDispatch();
 
-  //   const allComments = useSelector((state) => state.commentReducer.comments);
+  const [doneAt, setDoneAt] = useState(null);
 
   useEffect(() => {
     dispatch(fetchComments());
@@ -41,7 +41,8 @@ const Project = () => {
   };
 
   const addTodo = (text, title) => {
-    dispatch(addTodoAction(text, title, projectID));
+    dispatch(addTodoAction(text, title, projectID, doneAt));
+    // setDoneAt(null);
   };
 
   return (
@@ -58,6 +59,8 @@ const Project = () => {
             addTodo={addTodo}
             showAddForm={showAddForm}
             setShowAddForm={setShowAddForm}
+            setDoneAt={setDoneAt}
+            doneAt={doneAt}
           />
         )}
 
@@ -71,17 +74,21 @@ const Project = () => {
               (f) => f.status === statuses.QUEUE
             )}
             allComments={allComments}
+            setDoneAt={setDoneAt}
+            doneAt={doneAt}
           />
 
           <TargetBox
             key={tbKeys.DEVELOPMENT}
             projectID={projectID}
             targetID={tbKeys.DEVELOPMENT}
-            title={"В разработке"}
+            title={"В работе"}
             currentTodos={currentTodos.filter(
               (f) => f.status === statuses.DEVELOPMENT
             )}
             allComments={allComments}
+            setDoneAt={setDoneAt}
+            doneAt={doneAt}
           />
           <TargetBox
             key={tbKeys.DONE}
@@ -92,6 +99,8 @@ const Project = () => {
               (f) => f.status === statuses.DONE
             )}
             allComments={allComments}
+            setDoneAt={setDoneAt}
+            doneAt={doneAt}
           />
         </div>
       </div>

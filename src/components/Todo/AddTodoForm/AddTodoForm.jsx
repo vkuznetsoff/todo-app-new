@@ -1,7 +1,14 @@
 import { useState } from "react";
+import TodoDate from "../../TodoDate/TodoDate";
 import "./AddTodoForm.css";
 
-const AddTodoForm = ({ addTodo, showAddForm, setShowAddForm }) => {
+const AddTodoForm = ({
+  addTodo,
+  showAddForm,
+  setShowAddForm,
+  setDoneAt,
+  doneAt,
+}) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const isButtonDisabled = title.length === 0;
@@ -27,6 +34,7 @@ const AddTodoForm = ({ addTodo, showAddForm, setShowAddForm }) => {
           onChange={(e) => setText(e.target.value)}
           placeholder="Введите описание задачи..."
         />
+        <TodoDate setDoneAt={setDoneAt} doneAt={doneAt} />
       </div>
 
       <div className="buttons">

@@ -14,15 +14,18 @@ import { removeTodoAction } from "../../redux/actions";
 const COMMENTS = "COMMENTS";
 const EDIT_TODO = "EDIT_TODO";
 
-const Todo = ({ todo, currentComments, projectID }) => {
+const Todo = ({ todo, currentComments, projectID, setDoneAt, doneAt }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState(null);
 
-  const [timeInProgress, setTimeInProgress] = useState(
-    new Date().getTime() - new Date(todo.createdAt).getTime()
-  );
-
-  console.log("timeInProgress", timeInProgress);
+  // const [timeInProgress, setTimeInProgress] = useState(
+  //   new Date().getTime() - new Date(todo.createdAt).getTime()
+  // );
+  const timeInProgress =
+    new Date().getTime() - new Date(todo.createdAt).getTime();
+  console.log("Calc date:", Date(timeInProgress));
+  // console.log("timeInProgress", timeInProgress);
+  // new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
 
   const dispatch = useDispatch();
 
@@ -71,6 +74,7 @@ const Todo = ({ todo, currentComments, projectID }) => {
           <div class="todo__info">
             <div class="todo__title">{todo.title}</div>
             <div class="todo__details">{todo.createdAt}</div>
+            <div>timeInProgress:</div>
           </div>
 
           <div class="todo__bottom">
@@ -112,7 +116,7 @@ const Todo = ({ todo, currentComments, projectID }) => {
         )}
         {modalBody === EDIT_TODO && <TodoForm todo={todo} />} */}
         {modalBody === EDIT_TODO && (
-          <TodoForm todo={todo}>
+          <TodoForm todo={todo} setDoneAt={setDoneAt} doneAt={doneAt}>
             <Comments currentTodoId={todo.id} comments={currentComments} />
           </TodoForm>
         )}
